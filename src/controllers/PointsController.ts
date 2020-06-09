@@ -1,5 +1,7 @@
+import knex from "../database/connection";
+import { Request, Response } from "express";
 class PointsController {
-  async create(request, response) {
+  async create(request: Request, response: Response) {
     const {
       name,
       email,
