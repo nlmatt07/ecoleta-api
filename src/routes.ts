@@ -1,7 +1,9 @@
+import PointController from "./controllers/PointsController";
 import express from "express";
 import knex from "./database/connection";
 
 const routes = express.Router();
+const pointsController = new PointController();
 
 routes.get("/items", async (request, response) => {
   const items = await knex("items").select("*");
@@ -17,6 +19,6 @@ routes.get("/items", async (request, response) => {
   return response.json(serializedItems);
 });
 
-routes.post("/points");
+routes.post("/points", pointsController.create);
 
 export default routes;
